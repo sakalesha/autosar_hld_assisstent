@@ -23,3 +23,15 @@ class Document(Base):
     __table_args__ = (
         UniqueConstraint('project_id', 'name', 'version', name='uq_project_name_version'),
     )
+
+class Chunk(Base):
+    __tablename__ = "chunks"
+
+    chunk_id = Column(String(36), primary_key=True) # Deterministic ID based on document_id + sequence
+    document_id = Column(String(36), nullable=False)
+    page_start = Column(Integer, nullable=True)
+    page_end = Column(Integer, nullable=True)
+    section_path = Column(String, nullable=True)
+    chunk_type = Column(String, nullable=False) # 'text' or 'table'
+    ocr = Column(Boolean, default=False)
+    text = Column(String, nullable=False) # The actual content for RAG

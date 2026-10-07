@@ -15,3 +15,16 @@ class DocumentResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+class ChunkResponse(BaseModel):
+    chunk_id: str
+    document_id: str
+    page_start: Optional[int]
+    page_end: Optional[int]
+    section_path: Optional[str]
+    chunk_type: str
+    ocr: bool
+    text: str
+
+    class Config:
+        from_attributes = True

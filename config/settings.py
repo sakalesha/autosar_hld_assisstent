@@ -7,10 +7,11 @@ class Settings(BaseSettings):
     UPLOAD_DIR: str = "data/uploads"
     MAX_UPLOAD_SIZE_MB: int = 50
     MAX_UPLOAD_SIZE_BYTES: int = MAX_UPLOAD_SIZE_MB * 1024 * 1024
-    
+    GROQ_API_KEY: str = ""
     
     class Config:
         env_file = ".env"
+        extra = "ignore"
 
 settings = Settings()
 
